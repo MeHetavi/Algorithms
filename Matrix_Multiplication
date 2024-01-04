@@ -1,0 +1,10 @@
+def Multiply_Matrix_Normally(a:list[list],b:list[list]) -> list[list]:
+    c = []
+    for i in range(len(a)):
+        c.append([])
+        for x in range(len(b[0])):  
+            ans = 0
+            for j in range(len(b)):
+                ans += a[i][j] * b[j][x]
+            c[i] += [ans]
+    return c
