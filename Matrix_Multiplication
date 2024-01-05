@@ -1,3 +1,4 @@
+import numpy as np
 def multiply_Matrix_Normally(a:list[list],b:list[list]) -> list[list]:
     c = []
     for i in range(len(a)):
@@ -51,15 +52,18 @@ def divide_And_Conquer_Matrix_Multiplication(a,b):
         else:
             a1,a2,a3,a4 = divide(a)
             b1,b2,b3,b4 = divide(b)
-        # print(a1,a2,a3,a4)
-        # print(b1,b2,b3,b4)
+        
             c1 = add_Matrices(Multiply_Matrix_Normally(a1,b1),Multiply_Matrix_Normally(a2,b3))
             c2 = add_Matrices(Multiply_Matrix_Normally(a2,b2),Multiply_Matrix_Normally(a1,b4))
             c3 = add_Matrices(Multiply_Matrix_Normally(a3,b3),Multiply_Matrix_Normally(a4,b1))
             c4 = add_Matrices(Multiply_Matrix_Normally(a4,b4),Multiply_Matrix_Normally(a3,b2))
-        for i in range(len(c1)):
-            c1[i]+=c2[i]
-        for i in range(len(c3)):
-            c3[i]+=c4[i]
-        return c1+c3
+
+        # for i in range(len(c1)):
+        #     c1[i]+=c2[i]
+        # for i in range(len(c3)):
+        #     c3[i]+=c4[i]
+        # return c1+c3
+
+        return np.vstack((np.hstack((c1,c2)),np.hstack((c3,c4))))
+
     print(main(a,b))
