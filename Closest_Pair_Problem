@@ -1,0 +1,22 @@
+import math
+class Point:
+    def __init__(self,x,y) -> None:
+        self.x = x
+        self.y = y
+
+class Main:
+
+    def distance(p1:Point, p2:Point) -> int:
+        return math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2)
+    
+    def bruteForce(coords:list[Point]) -> int:
+        min_dist = float('inf')
+
+        for i in range(len(coords)):
+            for j in range(i+1,len(coords)):
+                dist = Main.distance(coords[i],coords[j])
+                if dist < min_dist:
+                    min_dist = dist
+        if min_dist==float('inf'):
+            return 0
+        return min_dist
