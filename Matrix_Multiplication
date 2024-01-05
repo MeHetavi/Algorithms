@@ -24,21 +24,10 @@ def divide_And_Conquer_Matrix_Multiplication(a,b):
 
 
     def divide(a):
-        col_mid = len(a[0])//2
-        row_mid = len(a)//2
-        a1=[]
-        a2=[]
-        a3=[]
-        a4=[]
-        for row in range(row_mid):
-            a1.append(a[row][:col_mid])
-        for row in range(row_mid):
-            a2.append(a[row][col_mid:])
-        for row in range(row_mid,len(a)):
-            a3.append(a[row][:col_mid])
-        for row in range(row_mid,len(a)):
-            a4.append(a[row][col_mid:])
-        return a1,a2,a3,a4
+        a = np.array(a)
+        row, col = a.shape
+        row2, col2 = row//2, col//2
+        return a[:row2, :col2], a[:row2, col2:], a[row2:, :col2], a[row2:, col2:]
 
     def add_Matrices(a,b):
         for row in range(len(a)):
